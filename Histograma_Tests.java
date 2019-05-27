@@ -59,7 +59,7 @@ public class Histograma_Tests {
         boolean color = false;
         if(resposta == 1)
         	color = true;
-        
+
         if(color) {
         	Imgproc.cvtColor(src, out, Imgproc.COLOR_RGB2HSV);
             Core.split(out, channels);
@@ -71,12 +71,15 @@ public class Histograma_Tests {
         	Imgproc.cvtColor(src, src, Imgproc.COLOR_RGB2GRAY);
         	Imgproc.equalizeHist(src, out);
         }
-        HighGui.namedWindow("source");
-        HighGui.namedWindow("output");
-        HighGui.imshow("source", src);
-        HighGui.imshow("output", out);
+
+        //	HighGui.namedWindow("source");
+        //	HighGui.namedWindow("output");
+        //	HighGui.imshow("source", src);
+        //	HighGui.imshow("output", out);
+        new CalcHist().make(out, "output.png");
         Imgcodecs.imwrite("output.png", out);
-        HighGui.waitKey();
+        //	HighGui.waitKey();
+        new CalcHist().make(src, "source.png");
 	}
 
 }
